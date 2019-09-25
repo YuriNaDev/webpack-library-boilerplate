@@ -1,16 +1,15 @@
-class Rectangle {
-	constructor(height, width) {
-		this.height = height
-		this.width = width
+class JsGrid {
+	constructor({ data }) {
+		this.data = data
 	}
-	// Getter
-	get area() {
-		return this.calcArea()
-	}
-	// Method
-	calcArea() {
-		return this.height * this.width
-	}
+
+	// get area() {
+	// 	return this.calcArea()
+	// }
+
+	// calcArea() {
+	// 	return this.height * this.width
+	// }
 }
 
-export default Rectangle
+export default JsGrid

@@ -1,9 +1,14 @@
 import './assets/scss/app.scss'
-import Rectangle from './library'
+import JsGrid from './library'
 
 function app() {
-	const square = new Rectangle(10, 10)
-	console.log(square.area)
+	const grid = new JsGrid({
+		el: '#grid',
+		columns: [],
+		data: [],
+	})
+	// const square = new Rectangle(10, 10)
+	// console.log(square.area)
 	// console.log(square.area)
 }
 app()
