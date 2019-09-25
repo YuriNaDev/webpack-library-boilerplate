@@ -5,10 +5,10 @@ module.exports = {
 	entry: './src/library.js',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		library: 'Rectangle',
+		library: 'KmaGrid',
 		libraryTarget: 'umd',
 		libraryExport: 'default',
-		filename: 'rectangle.js',
+		filename: 'kmagrid.min.js',
 	},
 	module: {
 		rules: [

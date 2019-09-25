@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+		/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Virtualize Test</title>
+		<link rel="icon" href="data:," />
+		<link
+			href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700&display=swap&subset=korean"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="src/assets/css/app.css" />
+	</head>
+	<body>
+		<div id="app">
+			<div id="grid"></div>
+		</div>
+		<script src="node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="dist/kmagrid.min.js"></script>
+		<script>
+			$(function() {
+				$.ajax({
+					method: 'GET',
+					url: 'http://localhost:3000/weather?_limit=5',
+					dataType: 'json',
+				}).done(function(response) {
+					var grid = new KmaGrid({
+						el: '#grid',
+						columns: [
+							{ text: '도시', key: 'city' },
+							{
+								text: '위경도',
+								group: [{ text: '경도', key: 'lon' }, { text: '위도', key: 'lat' }],
+							},
+							{
+								text: '온도',
+								group: [
+									{ text: '현재', key: 'tmp' },
+									{ text: '최고', key: 'tmn' },
+									{ text: '최저', key: 'tmx' },
+								],
+							},
+							{ text: '기압', key: 'ps' },
+							{ text: '습도', key: 'reh' },
+							{
+								text: '바람',
+								group: [{ text: '풍속', key: 'ws' }, { text: '풍향', key: 'wd' }],
+							},
+							{ text: '구름량', key: 'cloud' },
+						],
+						data: response,
+					})
+				})
+			})
+		</script>
+	</body>
+</html>

@@ -105,5 +105,7 @@ test/
 # except
 dist/
 *.lock
+data.json
+filter.js
 
 # End of https://www.gitignore.io/api/vue,node

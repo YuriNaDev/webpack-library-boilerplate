@@ -8,9 +8,14 @@
 		"clean": "shx rm -rf dist",
 		"prebuild": "yarn clean",
 		"build": "webpack",
-		"serve": "serve dist"
+		"serve": "serve dist",
+		"db": "json-server weather.json"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"axios": "^0.19.0",
+		"jquery": "^3.4.1",
+		"lodash": "^4.17.15"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.6.2",
 		"@babel/plugin-transform-runtime": "^7.6.2",

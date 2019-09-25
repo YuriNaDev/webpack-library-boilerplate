@@ -1,0 +1,17 @@
+body {
+	margin: 0;
+	background-color: #eee;
+	font-size: 14px;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+#app {
+	margin: 40px auto;
+	box-sizing: border-box;
+	background-color: #fff;
+	width: 550px;
+	max-width: 100%;
+	min-height: 200px;
+	max-height: 500px;
+	overflow: auto;
+}

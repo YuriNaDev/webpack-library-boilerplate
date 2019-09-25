@@ -27,13 +27,13 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: './src/assets/html/template.html',
 		}),
-		// new webpack.HotModuleReplacementPlugin(),
 	],
 	devServer: {
 		contentBase: path.resolve(__dirname, 'dist'),
 		open: true,
 		hot: true,
 		inline: true,
+		clientLogLevel: 'warn',
 		before(app, server) {
 			server._watch('src/**/*.html')
 		},
