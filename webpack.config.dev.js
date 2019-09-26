@@ -27,6 +27,10 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: './src/assets/html/template.html',
 		}),
+		new webpack.ProvidePlugin({
+			$: 'jquery',
+			jQuery: 'jquery',
+		}),
 	],
 	devServer: {
 		contentBase: path.resolve(__dirname, 'dist'),

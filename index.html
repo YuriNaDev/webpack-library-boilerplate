@@ -25,7 +25,7 @@
 			$(function() {
 				$.ajax({
 					method: 'GET',
-					url: 'http://localhost:3000/weather?_limit=5',
+					url: 'http://localhost:3000/weather?_limit=20',
 					dataType: 'json',
 				}).done(function(response) {
 					var grid = new KmaGrid({

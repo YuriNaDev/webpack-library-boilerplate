@@ -1,18 +1,33 @@
 import { isEmpty } from 'lodash'
 
-const getColspan = (node, leaf, visited, keys) => {
+const getKeyArr = (node, keys) => {
+	if (node.group) {
+		node.group.forEach(x => {
+			getKeyArr(x, keys)
+		})
+	} else {
+		keys.push(node.key)
+	}
+}
+
+export const getKeys = columns => {
+	const keys = []
+	getKeyArr({ text: 'start', group: columns }, keys)
+	return keys
+}
+
+const getColspan = (node, leaf, visited) => {
 	leaf[node.text] = 0
 	visited[node.text] = true
 	if (node.group) {
 		node.group.forEach(x => {
 			if (!visited[x.text]) {
-				getColspan(x, leaf, visited, keys)
+				getColspan(x, leaf, visited)
 				leaf[node.text] += leaf[x.text]
 			}
 		})
 	} else {
 		leaf[node.text] = 1
-		keys.push(node.key)
 	}
 }
 
@@ -44,10 +59,9 @@ const getRowspan = (node, leaf, i) => {
 export const getHeaders = columns => {
 	let headers = [[]]
 
-	// get key + colspan
+	// get colspan
 	const colspan = {}
-	const keys = []
-	getColspan({ text: 'start', group: columns }, colspan, {}, keys)
+	getColspan({ text: 'start', group: columns }, colspan, {})
 	delete colspan['start']
 
 	// get rowspan
@@ -81,5 +95,5 @@ export const getHeaders = columns => {
 		k++
 	}
 
-	return [headers, keys]
+	return headers
 }
